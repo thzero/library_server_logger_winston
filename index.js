@@ -1,20 +1,73 @@
 import winston from 'winston';
 
+import SyslogTransprt from './transports/syslog';
+
 import Service from '@thzero/library_server/service/index';
 
 const CLIENT_PREFIX = 'CLIENT: ';
 
 class LoggerService extends Service {
-	async initLogger(logLevel, prettify, config) {
+	constructor() {
+		super();
+
+		this._transports = [];
+		this._transportConfigs = [];
+
+		this._transportConfigs.push(new SyslogTransprt());
+	}
+
+	async initLogger(logLevel, prettify, configLogging, transports) {
+		if (transports && Array.isArray(transports)) {
+			for (const transport of transports)
+				this._transports.push(transport);
+		}
+
+		let levels = {
+			levels: {
+				off: 0,
+				fatal: 1,
+				error: 2,
+				warn: 3,
+				info: 4,
+				debug: 5,
+				trace: 6,
+				all: Number.MAX_VALUE
+			},
+			colors: {
+				fatal: 'red',
+				error: 'red',
+				warn: 'yellow',
+				info: 'green',
+				debug: 'blue',
+				trace: 'cyan'
+			}
+		};
+
+		let configLoggingExternal = configLogging.external || {
+			console: false
+		};
+		if (configLoggingExternal) {
+			for (const transportConfig of this._transportConfigs) {
+				if (configLoggingExternal.type !== transportConfig.type)
+					continue;
+
+				const results = transportConfig.init(winston, configLoggingExternal, logLevel);
+				if (!results)
+					throw Error(`Invalid transport '${configLoggingExternal.type}'.`);
+
+				this._transports.push(results.transport);
+				levels = results.levels;
+				logLevel = transportConfig.convertLevel(logLevel);
+			}
+		}
+
+		if (configLoggingExternal.console)
+			this._transports.push(new winston.transports.Console({ level: 'info' }));
+
 		this._log = winston.createLogger({
-			transports: [
-			  //
-			  // - Write all logs with level `error` and below to `error.log`
-			  // - Write all logs with level `info` and below to `combined.log`
-			  //
-			  new winston.transports.File({ filename: 'error.log', level: 'error' }),
-			  new winston.transports.File({ filename: 'combined.log' }),
-			],
+			level: logLevel,
+			levels: levels,
+			transports: this._transports
 		});
 	}
 
@@ -23,8 +76,11 @@ class LoggerService extends Service {
 	}
 
 	debug(message, data, isClient) {
+		if (!this._transports || (this._transports.length <= 0))
+			return;
+
 		data = (data === undefined ? null : data);
-		logger.log({
+		this._log.log({
 			level: 'debug',
 			message: this._message(message, isClient),
 			meta: data
@@ -32,8 +88,11 @@ class LoggerService extends Service {
 	}
 
 	error(message, data, isClient) {
+		if (!this._transports || (this._transports.length <= 0))
+			return;
+
 		data = (data === undefined ? null : data);
-		logger.log({
+		this._log.log({
 			level: 'error',
 			message: this._message(message, isClient),
 			meta: data
@@ -41,26 +100,35 @@ class LoggerService extends Service {
 	}
 
 	exception(ex, isClient) {
+		if (!this._transports || (this._transports.length <= 0))
+			return;
+
 		ex = (ex === undefined ? null : ex);
-		logger.log({
-			level: 'crit',
+		this._log.log({
+			level: 'error',
 			message: this._message(message, isClient),
 			data: ((isClient ? CLIENT_PREFIX : '') + ex)
 		});
 	}
 
 	fatal(message, data, isClient) {
+		if (!this._transports || (this._transports.length <= 0))
+			return;
+
 		data = (data === undefined ? null : data);
-		logger.log({
-			level: 'emerg',
+		this._log.log({
+			level: 'fatal',
 			message: this._message(message, isClient),
 			meta: data
 		});
 	}
 
 	info(message, data, isClient) {
+		if (!this._transports || (this._transports.length <= 0))
+			return;
+
 		data = (data === undefined ? null : data);
-		logger.log({
+		this._log.log({
 			level: 'info',
 			message: this._message(message, isClient),
 			meta: data
@@ -68,18 +136,24 @@ class LoggerService extends Service {
 	}
 
 	trace(message, data, isClient) {
+		if (!this._transports || (this._transports.length <= 0))
+			return;
+
 		data = (data === undefined ? null : data);
-		logger.log({
-			level: 'debug',
+		this._log.log({
+			level: 'trace',
 			message: this._message(message, isClient),
 			meta: data
 		});
 	}
 
 	warn(message, data, isClient) {
+		if (!this._transports || (this._transports.length <= 0))
+			return;
+
 		data = (data === undefined ? null : data);
-		logger.log({
-			level: 'warning',
+		this._log.log({
+			level: 'warn',
 			message: this._message(message, isClient),
 			data
 		});
