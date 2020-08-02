@@ -1,9 +1,9 @@
 {
   "name": "@thzero/library_server_logger_winston",
-  "version": "0.7.31",
+  "version": "0.7.32",
   "version_major": 0,
   "version_minor": 7,
-  "version_patch": 31,
+  "version_patch": 32,
   "version_date": "08/02/2020",
   "author": "thZero",
   "license": "MIT",
@@ -23,7 +23,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@thzero/library_server": "^0.7.29",
+    "@thzero/library_server": "^0.7.30",
     "winston": "^3.3.3",
     "winston-syslog": "^2.4.4"
   },
