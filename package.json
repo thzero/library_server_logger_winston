@@ -1,10 +1,10 @@
 {
   "name": "@thzero/library_server_logger_winston",
-  "version": "0.7.29",
+  "version": "0.7.30",
   "version_major": 0,
   "version_minor": 7,
-  "version_patch": 29,
-  "version_date": "08/01/2020",
+  "version_patch": 30,
+  "version_date": "08/02/2020",
   "author": "thZero",
   "license": "MIT",
   "repository": {

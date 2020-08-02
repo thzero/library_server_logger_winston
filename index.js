@@ -27,7 +27,7 @@ class LoggerService extends Service {
 		logger.log({
 			level: 'debug',
 			message: this._message(message, isClient),
-			data
+			meta: data
 		});
 	}
 
@@ -36,7 +36,7 @@ class LoggerService extends Service {
 		logger.log({
 			level: 'error',
 			message: this._message(message, isClient),
-			data
+			meta: data
 		});
 	}
 
@@ -45,7 +45,7 @@ class LoggerService extends Service {
 		logger.log({
 			level: 'crit',
 			message: this._message(message, isClient),
-			(isClient ? CLIENT_PREFIX : '') + ex
+			data: ((isClient ? CLIENT_PREFIX : '') + ex)
 		});
 	}
 
@@ -54,7 +54,7 @@ class LoggerService extends Service {
 		logger.log({
 			level: 'emerg',
 			message: this._message(message, isClient),
-			data
+			meta: data
 		});
 	}
 
@@ -63,7 +63,7 @@ class LoggerService extends Service {
 		logger.log({
 			level: 'info',
 			message: this._message(message, isClient),
-			data
+			meta: data
 		});
 	}
 
@@ -72,7 +72,7 @@ class LoggerService extends Service {
 		logger.log({
 			level: 'debug',
 			message: this._message(message, isClient),
-			data
+			meta: data
 		});
 	}
 
