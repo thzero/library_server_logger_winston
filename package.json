@@ -24,7 +24,6 @@
   },
   "dependencies": {
     "@thzero/library_server": "^0.7.30",
-    "unix-dgram": "^2.0.4",
     "winston": "^3.3.3",
     "winston-syslog": "^2.4.4"
   },
