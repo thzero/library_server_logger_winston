@@ -1,10 +1,10 @@
 {
   "name": "@thzero/library_server_logger_winston",
-  "version": "0.7.33",
+  "version": "0.7.34",
   "version_major": 0,
   "version_minor": 7,
-  "version_patch": 33,
-  "version_date": "08/03/2020",
+  "version_patch": 34,
+  "version_date": "08/04/2020",
   "author": "thZero",
   "license": "MIT",
   "repository": {
@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/thzero/library_server_logger_winston#readme",
   "engines": {
-    "node": ">=13.0.1"
+    "node": ">=12.8.3"
   },
   "scripts": {
     "cli-update": "./node_modules/.bin/library-cli --updateversion --pi",
@@ -24,9 +24,8 @@
   },
   "dependencies": {
     "@thzero/library_server": "^0.7.30",
-    "unix-dgram": "^2.0.4",
-    "winston": "^3.3.3",
-    "winston-syslog": "^2.4.4"
+    "@thzero/winston-syslog": "^2.4.5",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@thzero/library_cli": "^0.7.2"

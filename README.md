@@ -8,6 +8,12 @@
 
 [![NPM](https://nodei.co/npm/@thzero/library_server_logger_winston.png?compact=true)](https://npmjs.org/package/@thzero/library_server_logger_winston)
 
+#### Windows
+
+To avoid issue with unix-dgram use the no option flag
+
+npm install --no-optional
+npm install --production --no-optional
 
 ### Dependencies
 
@@ -15,4 +21,6 @@ https://stackoverflow.com/questions/35293117/npm-install-that-requires-node-gyp-
 
 (run as adminstrator)
 npm install --global --production windows-build-tools (uses vs2017 by default)
-npm config set msvs_version 2015 –global
+
+npm install --production --no-optional
+
