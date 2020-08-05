@@ -1,14 +1,14 @@
-require('winston-syslog').Syslog;
+require('@thzero/winston-syslog').Syslog;
 
 class SyslogTransport {
 	init(winston, config) {
-        const options = config.options || {
-            protocol: 'udp4'
-        };
-        winston.add(new winston.transports.Syslog(options));
+		const options = config.options || {
+			protocol: 'udp4'
+		};
+		winston.add(new winston.transports.Syslog(options));
 
-        const transport = new winston.transports.Syslog();
-        return { transport: transport, levels: winston.config.syslog.levels };
+		const transport = new winston.transports.Syslog();
+		return { transport: transport, levels: winston.config.syslog.levels };
 	}
 
 	convertLevel(logLevel) {
@@ -28,7 +28,7 @@ class SyslogTransport {
 		return null;
 	}
 
-    get type() { return 'syslog'; }
+	get type() { return 'syslog'; }
 }
 
 export default SyslogTransport;
