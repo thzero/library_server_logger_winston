@@ -106,8 +106,8 @@ class LoggerService extends Service {
 		ex = (ex === undefined ? null : ex);
 		this._log.log({
 			level: 'error',
-			message: this._message(message, isClient),
-			data: ((isClient ? CLIENT_PREFIX : '') + ex)
+			message: ((isClient ? CLIENT_PREFIX : '') + ex.message),
+			data: ex
 		});
 	}
 
