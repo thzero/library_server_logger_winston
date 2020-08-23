@@ -71,35 +71,55 @@ class LoggerService extends Service {
 		});
 	}
 
-	_message(message, isClient) {
-		return (isClient ? CLIENT_PREFIX : '') + message;
-	}
-
-	debug(message, data, isClient) {
+	debug(clazz, method, message, data, isClient) {
 		if (!this._transports || (this._transports.length <= 0))
 			return;
 
 		data = (data === undefined ? null : data);
 		this._log.log({
 			level: 'debug',
-			message: this._message(message, isClient),
+			message: this._format(clazz, method, message, isClient),
 			meta: data
 		});
 	}
 
-	error(message, data, isClient) {
+	debug2(message, data, isClient) {
+		if (!this._transports || (this._transports.length <= 0))
+			return;
+
+		data = (data === undefined ? null : data);
+		this._log.log({
+			level: 'debug',
+			message: this._format(null, null, message, isClient),
+			meta: data
+		});
+	}
+
+	error(clazz, method, message, data, isClient) {
 		if (!this._transports || (this._transports.length <= 0))
 			return;
 
 		data = (data === undefined ? null : data);
 		this._log.log({
 			level: 'error',
-			message: this._message(message, isClient),
+			message: this._format(clazz, method, message, isClient),
 			meta: data
 		});
 	}
 
-	exception(ex, isClient) {
+	error2(message, data, isClient) {
+		if (!this._transports || (this._transports.length <= 0))
+			return;
+
+		data = (data === undefined ? null : data);
+		this._log.log({
+			level: 'error',
+			message: this._format(null, null, message, isClient),
+			meta: data
+		});
+	}
+
+	exception(clazz, method, ex, isClient) {
 		if (!this._transports || (this._transports.length <= 0))
 			return;
 
@@ -111,52 +131,123 @@ class LoggerService extends Service {
 		});
 	}
 
-	fatal(message, data, isClient) {
+	exception2(ex, isClient) {
+		if (!this._transports || (this._transports.length <= 0))
+			return;
+
+		ex = (ex === undefined ? null : ex);
+		this._log.log({
+			level: 'error',
+			message: ((isClient ? CLIENT_PREFIX : '') + ex.message),
+			data: ex
+		});
+	}
+
+	fatal(clazz, method, message, data, isClient) {
 		if (!this._transports || (this._transports.length <= 0))
 			return;
 
 		data = (data === undefined ? null : data);
 		this._log.log({
 			level: 'fatal',
-			message: this._message(message, isClient),
+			message: this._format(clazz, method, message, isClient),
 			meta: data
 		});
 	}
 
-	info(message, data, isClient) {
+	fatal2(message, data, isClient) {
+		if (!this._transports || (this._transports.length <= 0))
+			return;
+
+		data = (data === undefined ? null : data);
+		this._log.log({
+			level: 'fatal',
+			message: this._format(null, null, message, isClient),
+			meta: data
+		});
+	}
+
+	info(clazz, method, message, data, isClient) {
 		if (!this._transports || (this._transports.length <= 0))
 			return;
 
 		data = (data === undefined ? null : data);
 		this._log.log({
 			level: 'info',
-			message: this._message(message, isClient),
+			message: this._format(clazz, method, message, isClient),
 			meta: data
 		});
 	}
 
-	trace(message, data, isClient) {
+	info2(message, data, isClient) {
+		if (!this._transports || (this._transports.length <= 0))
+			return;
+
+		data = (data === undefined ? null : data);
+		this._log.log({
+			level: 'info',
+			message: this._format(null, null, message, isClient),
+			meta: data
+		});
+	}
+
+	trace(clazz, method, message, data, isClient) {
 		if (!this._transports || (this._transports.length <= 0))
 			return;
 
 		data = (data === undefined ? null : data);
 		this._log.log({
 			level: 'trace',
-			message: this._message(message, isClient),
+			message: this._format(clazz, method, message, isClient),
 			meta: data
 		});
 	}
 
-	warn(message, data, isClient) {
+	trace2(message, data, isClient) {
+		if (!this._transports || (this._transports.length <= 0))
+			return;
+
+		data = (data === undefined ? null : data);
+		this._log.log({
+			level: 'trace',
+			message: this._format(null, null, message, isClient),
+			meta: data
+		});
+	}
+
+	warn(clazz, method, message, data, isClient) {
 		if (!this._transports || (this._transports.length <= 0))
 			return;
 
 		data = (data === undefined ? null : data);
 		this._log.log({
 			level: 'warn',
-			message: this._message(message, isClient),
+			message: this._format(clazz, method, message, isClient),
 			data
 		});
+	}
+
+	warn2(message, data, isClient) {
+		if (!this._transports || (this._transports.length <= 0))
+			return;
+
+		data = (data === undefined ? null : data);
+		this._log.log({
+			level: 'warn',
+			message: this._format(null, null, message, isClient),
+			data
+		});
+	}
+
+	_format(clazz, method, message, isClient) {
+		let output = clazz;
+		if (!String.isNullOrEmpty(output))
+			output += '.';
+		output += method;
+		if (!String.isNullOrEmpty(output))
+			output += ': ';
+		output += (isClient ? CLIENT_PREFIX : '') + message;
+		return output;
 	}
 }
 
