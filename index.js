@@ -240,13 +240,18 @@ class LoggerService extends Service {
 	}
 
 	_format(clazz, method, message, isClient) {
-		let output = clazz;
+		let output = '';
+		if (!String.isNullOrEmpty(clazz))
+			output += clazz;
 		if (!String.isNullOrEmpty(output))
 			output += '.';
-		output += method;
+		if (!String.isNullOrEmpty(method))
+			output += method;
 		if (!String.isNullOrEmpty(output))
 			output += ': ';
-		output += (isClient ? CLIENT_PREFIX : '') + message;
+		output += (isClient ? CLIENT_PREFIX : '');
+		if (!String.isNullOrEmpty(message))
+			output += message;
 		return output;
 	}
 }
