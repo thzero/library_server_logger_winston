@@ -71,55 +71,55 @@ class LoggerService extends Service {
 		});
 	}
 
-	debug(clazz, method, message, data, isClient) {
+	debug(clazz, method, message, data, correlationId, isClient) {
 		if (!this._transports || (this._transports.length <= 0))
 			return;
 
 		data = (data === undefined ? null : data);
 		this._log.log({
 			level: 'debug',
-			message: this._format(clazz, method, message, isClient),
+			message: this._format(clazz, method, message, correlationId, isClient),
 			meta: data
 		});
 	}
 
-	debug2(message, data, isClient) {
+	debug2(message, data, correlationId, isClient) {
 		if (!this._transports || (this._transports.length <= 0))
 			return;
 
 		data = (data === undefined ? null : data);
 		this._log.log({
 			level: 'debug',
-			message: this._format(null, null, message, isClient),
+			message: this._format(null, null, message, correlationId, isClient),
 			meta: data
 		});
 	}
 
-	error(clazz, method, message, data, isClient) {
+	error(clazz, method, message, data, correlationId, isClient) {
 		if (!this._transports || (this._transports.length <= 0))
 			return;
 
 		data = (data === undefined ? null : data);
 		this._log.log({
 			level: 'error',
-			message: this._format(clazz, method, message, isClient),
+			message: this._format(clazz, method, message, correlationId, isClient),
 			meta: data
 		});
 	}
 
-	error2(message, data, isClient) {
+	error2(message, data, correlationId, isClient) {
 		if (!this._transports || (this._transports.length <= 0))
 			return;
 
 		data = (data === undefined ? null : data);
 		this._log.log({
 			level: 'error',
-			message: this._format(null, null, message, isClient),
+			message: this._format(null, null, message, correlationId, isClient),
 			meta: data
 		});
 	}
 
-	exception(clazz, method, ex, isClient) {
+	exception(clazz, method, ex, correlationId, isClient) {
 		if (!this._transports || (this._transports.length <= 0))
 			return;
 
@@ -131,7 +131,7 @@ class LoggerService extends Service {
 		});
 	}
 
-	exception2(ex, isClient) {
+	exception2(ex, correlationId, isClient) {
 		if (!this._transports || (this._transports.length <= 0))
 			return;
 
@@ -143,104 +143,106 @@ class LoggerService extends Service {
 		});
 	}
 
-	fatal(clazz, method, message, data, isClient) {
+	fatal(clazz, method, message, data, correlationId, isClient) {
 		if (!this._transports || (this._transports.length <= 0))
 			return;
 
 		data = (data === undefined ? null : data);
 		this._log.log({
 			level: 'fatal',
-			message: this._format(clazz, method, message, isClient),
+			message: this._format(clazz, method, message, correlationId, isClient),
 			meta: data
 		});
 	}
 
-	fatal2(message, data, isClient) {
+	fatal2(message, data, correlationId, isClient) {
 		if (!this._transports || (this._transports.length <= 0))
 			return;
 
 		data = (data === undefined ? null : data);
 		this._log.log({
 			level: 'fatal',
-			message: this._format(null, null, message, isClient),
+			message: this._format(null, null, message, correlationId, isClient),
 			meta: data
 		});
 	}
 
-	info(clazz, method, message, data, isClient) {
+	info(clazz, method, message, data, correlationId, isClient) {
 		if (!this._transports || (this._transports.length <= 0))
 			return;
 
 		data = (data === undefined ? null : data);
 		this._log.log({
 			level: 'info',
-			message: this._format(clazz, method, message, isClient),
+			message: this._format(clazz, method, message, correlationId, isClient),
 			meta: data
 		});
 	}
 
-	info2(message, data, isClient) {
+	info2(message, data, correlationId, isClient) {
 		if (!this._transports || (this._transports.length <= 0))
 			return;
 
 		data = (data === undefined ? null : data);
 		this._log.log({
 			level: 'info',
-			message: this._format(null, null, message, isClient),
+			message: this._format(null, null, message, correlationId, isClient),
 			meta: data
 		});
 	}
 
-	trace(clazz, method, message, data, isClient) {
+	trace(clazz, method, message, data, correlationId, isClient) {
 		if (!this._transports || (this._transports.length <= 0))
 			return;
 
 		data = (data === undefined ? null : data);
 		this._log.log({
 			level: 'trace',
-			message: this._format(clazz, method, message, isClient),
+			message: this._format(clazz, method, message, correlationId, isClient),
 			meta: data
 		});
 	}
 
-	trace2(message, data, isClient) {
+	trace2(message, data, correlationId, isClient) {
 		if (!this._transports || (this._transports.length <= 0))
 			return;
 
 		data = (data === undefined ? null : data);
 		this._log.log({
 			level: 'trace',
-			message: this._format(null, null, message, isClient),
+			message: this._format(null, null, message, correlationId, isClient),
 			meta: data
 		});
 	}
 
-	warn(clazz, method, message, data, isClient) {
+	warn(clazz, method, message, data, correlationId, isClient) {
 		if (!this._transports || (this._transports.length <= 0))
 			return;
 
 		data = (data === undefined ? null : data);
 		this._log.log({
 			level: 'warn',
-			message: this._format(clazz, method, message, isClient),
+			message: this._format(clazz, method, message, correlationId, isClient),
 			data
 		});
 	}
 
-	warn2(message, data, isClient) {
+	warn2(message, data, correlationId, isClient) {
 		if (!this._transports || (this._transports.length <= 0))
 			return;
 
 		data = (data === undefined ? null : data);
 		this._log.log({
 			level: 'warn',
-			message: this._format(null, null, message, isClient),
+			message: this._format(null, null, message, correlationId, isClient),
 			data
 		});
 	}
 
-	_format(clazz, method, message, isClient) {
+	_format(clazz, method, message, correlationId, isClient) {
 		let output = '';
+		if (!String.isNullOrEmpty(correlationId))
+			output += `(${correlationId}) `;
 		if (!String.isNullOrEmpty(clazz))
 			output += clazz;
 		if (!String.isNullOrEmpty(output))
