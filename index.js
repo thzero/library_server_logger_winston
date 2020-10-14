@@ -244,12 +244,10 @@ class LoggerService extends Service {
 		if (!String.isNullOrEmpty(correlationId))
 			output += `(${correlationId}) `;
 		if (!String.isNullOrEmpty(clazz))
-			output += clazz;
-		if (!String.isNullOrEmpty(output))
-			output += '.';
+			output += clazz + (!String.isNullOrEmpty(method) ? '.' : '');
 		if (!String.isNullOrEmpty(method))
 			output += method;
-		if (!String.isNullOrEmpty(output))
+		if (!String.isNullOrEmpty(clazz) || !String.isNullOrEmpty(method))
 			output += ': ';
 		output += (isClient ? CLIENT_PREFIX : '');
 		if (!String.isNullOrEmpty(message))
