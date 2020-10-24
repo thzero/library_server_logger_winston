@@ -241,7 +241,7 @@ class LoggerService extends Service {
 
 	_format(clazz, method, message, correlationId, isClient) {
 		let output = '';
-		if (!String.isNullOrEmpty(correlationId))
+		if ((correlationId != null) && (correlationId != undefined) && !String.isNullOrEmpty(correlationId))
 			output += `(${correlationId}) `;
 		if (!String.isNullOrEmpty(clazz))
 			output += clazz + (!String.isNullOrEmpty(method) ? '.' : '');
