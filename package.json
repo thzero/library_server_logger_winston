@@ -23,7 +23,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@thzero/library_server": "^0.12.11",
+    "@thzero/library_server": "^0.12.15",
     "@thzero/winston-syslog": "^2.4.5",
     "winston": "^3.3.3"
   },
