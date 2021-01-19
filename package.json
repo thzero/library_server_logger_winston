@@ -1,9 +1,9 @@
 {
   "name": "@thzero/library_server_logger_winston",
-  "version": "0.13.4",
+  "version": "0.13.5",
   "version_major": 0,
   "version_minor": 13,
-  "version_patch": 4,
+  "version_patch": 5,
   "version_date": "01/19/2021",
   "author": "thZero",
   "license": "MIT",
@@ -26,11 +26,10 @@
     "@thzero/winston-syslog": "^2.4.5",
     "winston": "^3.3.3"
   },
-  "peerDependencies": {
-    "@thzero/library_common_service": "^0.13",
-    "@thzero/library_server": "^0.13"
-  },
   "devDependencies": {
     "@thzero/library_cli": "^0.13"
+  },
+  "peerDependencies": {
+    "@thzero/library_server": "^0.13"
   }
 }
