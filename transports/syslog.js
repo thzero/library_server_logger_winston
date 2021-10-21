@@ -1,13 +1,23 @@
-require('@thzero/winston-syslog').Syslog;
+// require('@thzero/winston-syslog').Syslog;
+import * as Syslog from '@thzero/winston-syslog/lib/winston-syslog';
 
 class SyslogTransport {
+	// init(winston, config) {
+	// 	const options = config.options || {
+	// 		protocol: 'udp4'
+	// 	};
+	// 	winston.add(new winston.transports.Syslog(options));
+
+	// 	const transport = new winston.transports.Syslog();
+	// 	return { transport: transport, levels: winston.config.syslog.levels };
+	// }
 	init(winston, config) {
 		const options = config.options || {
 			protocol: 'udp4'
 		};
-		winston.add(new winston.transports.Syslog(options));
+		winston.add(new Syslog.Syslog(options));
 
-		const transport = new winston.transports.Syslog();
+		const transport = new Syslog.Syslog();
 		return { transport: transport, levels: winston.config.syslog.levels };
 	}
 
