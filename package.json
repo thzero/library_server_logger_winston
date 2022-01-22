@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@thzero/winston-syslog": "^2.4.5",
-    "winston": "^3.3.3"
+    "winston": "^3.4.0"
   },
   "devDependencies": {
     "@thzero/library_cli": "^0.13.21"
