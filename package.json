@@ -2,11 +2,11 @@
   "name": "@thzero/library_server_logger_winston",
   "type": "module",
   "exports": "./index.js",
-  "version": "0.15.4",
+  "version": "0.15.5",
   "version_major": 0,
   "version_minor": 15,
-  "version_patch": 4,
-  "version_date": "12/31/2021",
+  "version_patch": 5,
+  "version_date": "01/29/2022",
   "author": "thZero",
   "license": "MIT",
   "repository": {
@@ -27,10 +27,10 @@
   },
   "dependencies": {
     "@thzero/winston-syslog": "^2.4.5",
-    "winston": "^3.3.3"
+    "winston": "^3.5.0"
   },
   "devDependencies": {
-    "@thzero/library_cli": "^0.13.21"
+    "@thzero/library_cli": "^0.15.2"
   },
   "peerDependencies": {
     "@thzero/library_common": "^0.15",
