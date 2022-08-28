@@ -1,5 +1,5 @@
 // require('@thzero/winston-syslog').Syslog;
-import * as Syslog from '@thzero/winston-syslog/lib/winston-syslog';
+import * as Syslog from '@thzero/winston-syslog/lib/winston-syslog.js';
 
 class SyslogTransport {
 	// init(winston, config) {
