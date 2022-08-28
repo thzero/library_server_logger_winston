@@ -1,8 +1,8 @@
 import winston from 'winston';
 
-import SyslogTransprt from './transports/syslog';
+import SyslogTransprt from './transports/syslog.js';
 
-import Service from '@thzero/library_server/service/index';
+import Service from '@thzero/library_server/service/index.js';
 
 const CLIENT_PREFIX = 'CLIENT: ';
 
