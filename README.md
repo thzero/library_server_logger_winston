@@ -4,6 +4,12 @@
 
 # library_server_logger_winston
 
+## Requirements
+
+### NodeJs
+
+[NodeJs](https://nodejs.org) version 18+
+
 ### Installation
 
 [![NPM](https://nodei.co/npm/@thzero/library_server_logger_winston.png?compact=true)](https://npmjs.org/package/@thzero/library_server_logger_winston)
@@ -23,4 +29,3 @@ https://stackoverflow.com/questions/35293117/npm-install-that-requires-node-gyp-
 npm install --global --production windows-build-tools (uses vs2017 by default)
 
 npm install --production --no-optional
-
