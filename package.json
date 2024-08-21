@@ -1,11 +1,11 @@
 {
   "name": "@thzero/library_server_logger_winston",
   "type": "module",
-  "version": "0.18.3",
+  "version": "0.18.4",
   "version_major": 0,
   "version_minor": 18,
-  "version_patch": 3,
-  "version_date": "07/23/2024",
+  "version_patch": 4,
+  "version_date": "08/20/2024",
   "author": "thZero",
   "license": "MIT",
   "repository": {
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@thzero/winston-syslog": "^2.4.5",
-    "winston": "^3.13.1"
+    "winston": "^3.14.2"
   },
   "peerDependencies": {
     "@thzero/library_common": "^0.18",
