@@ -1,11 +1,11 @@
 {
   "name": "@thzero/library_server_logger_winston",
   "type": "module",
-  "version": "0.18.9",
+  "version": "0.18.10",
   "version_major": 0,
   "version_minor": 18,
-  "version_patch": 9,
-  "version_date": "12/10/2025",
+  "version_patch": 10,
+  "version_date": "02/06/2026",
   "author": "thZero",
   "license": "MIT",
   "repository": {
