@@ -16,38 +16,31 @@ export default () => {
         },
         {
             category: 'server',
-            name: '@thzero/library_service',
-            url: 'https://github.com/thzero/library_service',
+            name: '@thzero/library_server',
+            url: 'https://github.com/thzero/library_server',
             licenseName: 'MIT',
-            licenseUrl: 'https://github.com/thzero/library_service/blob/master/license.md'
+            licenseUrl: 'https://github.com/thzero/library_server/blob/master/license.md'
         },
-		{
-			category: 'server',
-			name: '@thzero/library_server_logger_winston',
-			url: 'https://github.com/thzero/library_server_logger_winston',
-			licenseName: 'MIT',
-			licenseUrl: 'https://github.com/thzero/library_server_logger_winston/blob/master/license.md'
-		},
-		{
-			category: 'server',
-			name: '@thzero/winston-syslog',
-			url: 'https://github.com/thzero/winston-syslog',
-			licenseName: 'MIT',
-			licenseUrl: 'https://github.com/thzero/winston-syslog/blob/master/license.md'
-		},
-		{
-			category: 'server',
-			name: 'winston',
-			url: 'https://github.com/winstonjs/winston',
-			licenseName: 'MIT',
-			licenseUrl: 'https://github.com/winstonjs/winston/blob/master/LICENSE'
-		},
-		{
-			category: 'server',
-			name: 'winston',
-			url: 'https://github.com/winstonjs/winston',
-			licenseName: 'MIT',
-			licenseUrl: 'https://github.com/winstonjs/winston/blob/master/LICENSE'
-		}
+        {
+            category: 'server',
+            name: '@thzero/library_server_logger_winston',
+            url: 'https://github.com/thzero/library_server_logger_winston',
+            licenseName: 'MIT',
+            licenseUrl: 'https://github.com/thzero/library_server_logger_winston/blob/master/license.md'
+        },
+        {
+            category: 'server',
+            name: '@thzero/winston-syslog',
+            url: 'https://github.com/thzero/winston-syslog',
+            licenseName: 'MIT',
+            licenseUrl: 'https://github.com/thzero/winston-syslog/blob/master/license.md'
+        },
+        {
+            category: 'server',
+            name: 'winston',
+            url: 'https://github.com/winstonjs/winston',
+            licenseName: 'MIT',
+            licenseUrl: 'https://github.com/winstonjs/winston/blob/master/LICENSE'
+        }
     ];
 }
