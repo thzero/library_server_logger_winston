@@ -22,17 +22,17 @@ class SyslogTransport {
 	}
 
 	convertLevel(logLevel) {
-		if (logLevel == 'debug')
+		if (logLevel === 'debug')
 			return 'debug';
-		if (logLevel == 'error')
+		if (logLevel === 'error')
 			return 'error';
-		if (logLevel == 'fatal')
+		if (logLevel === 'fatal')
 			return 'emerg';
-		if (logLevel == 'info')
+		if (logLevel === 'info')
 			return 'info';
-		if (logLevel == 'trace')
+		if (logLevel === 'trace')
 			return 'debug';
-		if (logLevel == 'warn')
+		if (logLevel === 'warn')
 			return 'warning';
 
 		return null;
