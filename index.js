@@ -223,7 +223,7 @@ class LoggerService extends Service {
 		this._log.log({
 			level: 'warn',
 			message: this._format(clazz, method, message, correlationId, isClient),
-			data
+			meta: data
 		});
 	}
 
@@ -235,13 +235,13 @@ class LoggerService extends Service {
 		this._log.log({
 			level: 'warn',
 			message: this._format(null, null, message, correlationId, isClient),
-			data
+			meta: data
 		});
 	}
 
 	_format(clazz, method, message, correlationId, isClient) {
 		let output = '';
-		if ((correlationId != null) && (correlationId != undefined) && !String.isNullOrEmpty(correlationId))
+		if (!String.isNullOrEmpty(correlationId))
 			output += `(${correlationId}) `;
 		if (!String.isNullOrEmpty(clazz))
 			output += clazz + (!String.isNullOrEmpty(method) ? '.' : '');
