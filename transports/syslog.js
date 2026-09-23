@@ -15,9 +15,10 @@ class SyslogTransport {
 		const options = config.options || {
 			protocol: 'udp4'
 		};
-		winston.add(new Syslog.Syslog(options));
-
-		const transport = new Syslog.Syslog();
+		// One transport, built with the options. This used to add a configured
+		// instance to winston's default logger, which nothing writes to, and then
+		// hand back a second one built without the options.
+		const transport = new Syslog.Syslog(options);
 		return { transport: transport, levels: winston.config.syslog.levels };
 	}
 
